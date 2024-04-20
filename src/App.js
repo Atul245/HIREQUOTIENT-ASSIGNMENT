@@ -69,7 +69,6 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
 const StyledTableContainer = styled(TableContainer)(({ theme }) => ({
   margin: theme.spacing(1),
   marginTop: theme.spacing(2),
-  padding: theme.spacing(0.8),
   backgroundColor: theme.palette.common.cyan, 
 }));
 
