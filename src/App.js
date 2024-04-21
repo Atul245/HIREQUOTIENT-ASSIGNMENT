@@ -17,17 +17,18 @@ import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
 
 // Styled components
-const ExpandCollapseIconButton = styled(IconButton)(({ theme }) => ({
-  backgroundColor: '#5F50F0', 
-  borderRadius: '50%', 
+const ExpandCollapseIconButton = styled(IconButton)(({ theme, isExpanded }) => ({
+  backgroundColor: isExpanded ? '#5F50F0' : '#F5F5F5', 
+  borderRadius: '50%',
   height: '15px',
   width: '15px',
-  color:"White", 
-  marginRight: '15px', 
+  color: isExpanded ? "white" : "black", 
+  marginRight: '15px',
   '&:hover': {
-    backgroundColor: '#5F50F0', 
+    backgroundColor: isExpanded ? '#5F50F0' : '#F5F5F5', 
   },
 }));
+
 
 const StyledKeyboardArrowDownIcon = styled(KeyboardArrowDownIcon)(({ theme }) => ({
   fontSize: '16px', 
@@ -69,7 +70,6 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
 const StyledTableContainer = styled(TableContainer)(({ theme }) => ({
   margin: theme.spacing(1),
   marginTop: theme.spacing(2),
-  backgroundColor: theme.palette.common.cyan, 
 }));
 
 // Function to group data by asset class
@@ -145,8 +145,8 @@ function App() {
             <TableBody>
               <TableRow>
                 <StyledTableCell>
-                  <ExpandCollapseIconButton aria-label="expand row" size="small" onClick={() => toggleExpand(assetClass)}>
-                    {expanded[assetClass] ? <StyledKeyboardArrowUpIcon /> : <StyledKeyboardArrowDownIcon />}
+                  <ExpandCollapseIconButton aria-label="expand row" size="small" onClick={() => toggleExpand(assetClass)} isExpanded={expanded[assetClass]}>
+                      {expanded[assetClass] ? <StyledKeyboardArrowUpIcon /> : <StyledKeyboardArrowDownIcon />}
                   </ExpandCollapseIconButton>
                   {assetClass} ({groupedData[assetClass].length})
                 </StyledTableCell>
